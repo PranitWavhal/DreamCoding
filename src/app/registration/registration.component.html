@@ -1,0 +1,52 @@
+<div id="registrationcontainer">
+	<div id="registrationpanel">
+		<h1 id="registrationheading">Registration Form</h1>
+		<form id="registrationform" [formGroup]="registrationform" (ngSubmit)="RegistrationSubmit()">
+			<p class="registrationfield">
+				<input type="text" id="txtregistrationfirstname" placeholder="First Name*" [formControl]="firstname"/>
+				<input type="text" id="txtregistrationlastname" placeholder="Last Name*" [formControl]="lastname"/><br/>
+			</p>
+			<div [hidden]="firstname.valid || firstname.untouched">
+				<div [hidden]="!firstname.hasError('required')">
+				First Name Is The Mandatory Field
+				</div>
+			</div>
+			<div [hidden]="lastname.valid || lastname.untouched">
+				<div [hidden]="!lastname.hasError('required')">
+				Last Name Is The Mandatory Field
+				</div>
+			</div>
+			<p class="registrationfield">
+				<input type="text" id="txtregistrationmobilenumber" placeholder="Mobile Number*" [formControl]="mobilenumber"/><br/>
+			</p>
+			<div [hidden]="mobilenumber.valid || mobilenumber.untouched">
+				<div [hidden]="!mobilenumber.hasError('required')">
+				Mobile Number Is The Mandatory Field
+				</div>
+				<div [hidden]="!mobilenumber.hasError('minlength')">
+				Mobile Number Cannot Be Less Than 9 Digits
+				</div>
+				<div [hidden]="!mobilenumber.hasError('maxlength')">
+				Mobile Number Cannot Be Greater Than 9 Digits
+				</div>
+			</div>
+			<p class="registrationfield">
+				<input type="text" id="txtregistrationsetusername" placeholder="Your Username Is : " [formControl]="setusername" readonly/><br/>
+			</p>
+			<p class="registrationfield">
+				<input type="text" id="txtregistrationsetpassword" placeholder="Set Password*" [formControl]="setpassword"/><br/>
+			</p>
+			<div [hidden]="setpassword.valid || setpassword.untouched">
+				<div [hidden]="!setpassword.hasError('required')">
+				Password Is The Mandatory Field
+				</div>
+				<div [hidden]="!setpassword.hasError('minlength')">
+				Password Cannot Be Less Than 6 Characters
+				</div>
+			</div>
+			<p class="registrationfield" id="registrationsubmit">
+				<button type="submit" id="btnregistrationsubmit" [disabled]="!registrationform.valid">Register</button>
+			</p>
+		</form>
+	</div>
+</div>

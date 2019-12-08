@@ -1,0 +1,26 @@
+<div id="logincontainer">
+	<div id="loginpanel">
+		<h1 id="loginheading">Login Form</h1>
+		<form id="loginform" [formGroup]="loginform" (ngSubmit)="LoginSubmit()">
+			<p class="loginfield">
+				 <input type="text" id="txtloginusername" placeholder="Enter Username" [formControl]="username"/><br/>
+			</p>
+			<div [hidden]="username.valid || username.untouched">
+				<div [hidden]="!username.hasError('required')">
+				Username Is The Mandatory Field
+				</div>
+			</div>
+			<p class="loginfield">
+				 <input type="password" id="txtloginpassword" placeholder="Enter Password" [formControl]="password"/><br/>
+			</p>
+			<div [hidden]="password.valid || password.untouched">
+				<div [hidden]="!password.hasError('required')">
+				Password Is The Mandatory Field
+				</div>
+			</div>
+			<p id="loginsubmit" class="loginfield">
+				 <button type="submit" id="btnloginsubmit" [disabled]="!loginform.valid">Log In</button>
+			</p>
+		</form>
+	</div>
+</div>
